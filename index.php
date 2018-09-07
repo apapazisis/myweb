@@ -7,7 +7,8 @@
     <title>Freiberufler Web Entwickler | Apostolos Papazisis</title>
 </head>
     <body>
-        <div id="app">
+        <div class="container" id="app">
+            <main></main>
             <sidebar></sidebar>
         </div>
         <script src="dist/app.js"></script>
