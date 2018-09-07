@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
     mode: 'development',
@@ -12,7 +13,6 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'dist.js', // Here we can have for caching reasons hash(all the files same hash number), chunkhash(every file its unique hash code)
     },
     module: {
         rules: [
@@ -61,6 +61,8 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin('[name].css'), // The name of the entry.
+
+        new VueLoaderPlugin(),
 
         new CleanWebpackPlugin(['dist'], // Plugin to delete dist folder
             {

@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Freiberufler Web Entwickler | Apostolos Papazisis</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Freiberufler Web Entwickler | Apostolos Papazisis</title>
 </head>
-<body>
-	<div id="app">
-	</div>
-</body>
+    <body>
+        <div id="app">
+            <sidebar></sidebar>
+        </div>
+        <script src="dist/app.js"></script>
+    </body>
 </html>
