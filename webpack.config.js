@@ -1,14 +1,16 @@
 var webpack = require('webpack');
 var path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const { VueLoaderPlugin } = require('vue-loader')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
+    stats: 'normal',
     mode: 'development',
     entry: {
         app: [
-            './js/bootstrap.js'
+            './js/bootstrap.js',
+            './scss/theme.scss'
         ]
     },
     output: {
@@ -17,36 +19,18 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/,
-                use: ['ccs-loader']
-                // The CSS loader takes a CSS file and returns the CSS with imports and url(...) resolved via webpack's require functionality
-                // The style loader takes CSS and actually inserts it into the page so that the styles are active on the page.
-            },
-            {
                 test: /\.js$/, // Run the loader on all .js files
                 exclude: /node_modules/, // ignore all files in the node_modules folder
                 loader: 'babel-loader' // babel-loader compile files to plain javascript
                 // Through the .babelrc file we define the presets which means in which format(ES6, ES7 e.t.c.) will be compiled our code.
             },
             {
-                test: /\.s[ac]ss$/, // Match .scss and .sass files
-                use: ExtractTextPlugin.extract({
-                    use:  ['css-loader', 'sass-loader'], // sass-loader convert sass to css and css-loader returns the css
-                    fallback: 'style-loader'
-                })
-            },
-            {
-                test: /\.(png|jpe?g|gif)$/, // Match only these extensions. Regex for jpg, jpeg
-                loader: 'file-loader',
-                options: {
-                    name () {
-                        if (process.env.NODE_ENV === 'development') {
-                            return '/images/[name].[ext]' // The path of the images where they will be generated.
-                        }
-
-                        return '/images/[hash].[ext]' // The path of the images where they will be generated.
-                    }
-                }
+                test: /\.(s[ac]ss|css)$/, // Match .scss and .sass files
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader', // sass-loader convert sass to css and css-loader returns the css
+                ]
             },
             {
                 test: /\.vue$/,
@@ -60,7 +44,9 @@ module.exports = {
         }
     },
     plugins: [
-        new ExtractTextPlugin('[name].css'), // The name of the entry.
+        new MiniCssExtractPlugin({ // The name of the entry.
+            filename: '[name].css',
+        }),
 
         new VueLoaderPlugin(),
 
