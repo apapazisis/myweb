@@ -8,10 +8,14 @@
     <link href="dist/app.css" type="text/css" rel="stylesheet">
 </head>
     <body>
+    <div id="colorlib-page">
         <div id="app">
             <header-menu></header-menu>
-            <router-view></router-view>
+            <div id="colorlib-main">
+                <router-view></router-view>
+            </div>
         </div>
+    </div>
         <script src="dist/app.js"></script>
     </body>
 </html>

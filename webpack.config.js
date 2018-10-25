@@ -10,7 +10,7 @@ module.exports = {
     entry: {
         app: [
             './js/bootstrap.js',
-            './scss/theme.scss'
+            './scss/all.scss'
         ]
     },
     output: {
