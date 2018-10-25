@@ -8,9 +8,9 @@
     <link href="dist/app.css" type="text/css" rel="stylesheet">
 </head>
     <body>
-        <div class="uk-container" id="app">
-            <contents></contents>
-            <sidebar></sidebar>
+        <div id="app">
+            <header-menu></header-menu>
+            <router-view></router-view>
         </div>
         <script src="dist/app.js"></script>
     </body>
