@@ -5,6 +5,6 @@ import Routes from './routes';
 Vue.use(Router);
 
 export default new Router({
-    mode: 'history', // Fix the urls by removing sharp symbol
+    // mode: 'history', // Fix the urls by removing sharp symbol
     routes: Routes
 });
